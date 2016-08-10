@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+import numpy as np
 data_open = open("galaxies.csv", "rU")
 data_in = list(csv.reader(data_open))
 
@@ -26,10 +27,22 @@ for item in data_in[1:]:
 	r_g = float(item[2])
 	r_g_list.append(r_g)
 
+
+cm = plt.cm.get_cmap('RdYlBu_r')
+Y,X = np.histogram(r_g_list, 25, normed=1)
+x_span = X.max()-X.min()
+C = [cm(((x-X.min())/x_span)) for x in X]
+
 plt.xlabel("Color value")
 plt.ylabel("Frequency")
 plt.title("Frequency of different colors among galaxies")
-plt.hist(r_g_list, range=[0,1.3])
+plt.bar(X[:-1],Y,color=C)
+
+#width=X[1]-X[0])
+
+
+
+#plt.hist(r_g_list, )
 
 
 plt.show()

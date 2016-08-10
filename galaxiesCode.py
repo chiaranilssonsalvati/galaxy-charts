@@ -29,8 +29,7 @@ allcolors = list(range(-1,1))
 plt.xlabel("Color value")
 plt.ylabel("Frequency")
 plt.title("Frequency of different colors among galaxies")
-plt.xticks(allcolors,allcolors)
-plt.hist(r_g_list)
+plt.hist(r_g_list, range=[0, 2])
 
 
 plt.show()
